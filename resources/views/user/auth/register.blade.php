@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <!-- Form -->
-                            <form action="{{ route('user.register') }}" method="post">
+                            <form action="{{ route('register') }}" method="post">
                                 @csrf
                                 <div class="row">
                                     <div class="col py-4">

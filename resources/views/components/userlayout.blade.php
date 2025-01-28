@@ -10,57 +10,78 @@
     @vite(['resources/scss/app.scss', 'resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
-    <nav class="navbar navbar-expand-lg bg-warning">
+    <nav class="navbar bg-warning bg-gradient">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <div class="row mx-auto mx-md-0">
+                <div class="col">
+                    <div class="navbar-brand" href="#">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-4 text-center mb-3 m-md-0 align-self-center">
+                                <div class="d-md-flex justify-content-end">
+                                    <img width="75px" class="object-fit-sm-scale"
+                                        src="{{ asset('storage/images/cvsu-logo.png') }}"
+                                        alt="Cavite State University - Silang Campus Logo">
+                                </div>
+                            </div>
 
-            <div class="d-md-flex justify-content-end py-2 px-0">
-                <img width="75px" class="object-fit-sm-scale" src="{{ asset('storage/images/cvsu-logo.png') }}"
-                    alt="Cavite State University - Silang Campus Logo">
-            </div>
-
-            <div class="col align-self-center">
-                <div class="jea-wrapper d-grid justify-content-start">
-                    <div class="school-title">Cavite State University</div>
-                    <div class="school-campus">Silang Campus</div>
-                    <div class="school-tagline">Truth | Excellence | Service</div>
+                            <div class="col-sm-6 col-md-8 align-self-center">
+                                <div class="jea-wrapper d-grid justify-content-center justify-content-md-start">
+                                    <div class="school-title">
+                                        Cavite State University
+                                    </div>
+                                    <div class="school-campus">
+                                        Silang Campus
+                                    </div>
+                                    <div class="school-tagline">
+                                        Truth | Excellence | Service
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
-                aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <div class="row gx-2 mt-3 mt-lg-0 jea mx-auto mx-lg-0 mx-md-0">
+                <!-- DASHBOARD -->
+                <div class="col">
+                    <a href="{{ route('dashboard') }}" class="btn btn-outline-success">
+                        <i class="bi bi-house-door-fill"></i>
+                    </a>
                 </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav align-self-center justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item"><a class="nav-link" href="{{ route('user.dashboard') }}">Dashboard</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">Others</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('user.my_subjects') }}">My Subjects</a></li>
-                                <li><a class="dropdown-item" href="{{ route('user.my_schedule') }}">My Schedule</a></li>
-                                <li><a class="dropdown-item" href="{{ route('user.my_checklist') }}">My Checklist</a></li>
-                                <li><a class="dropdown-item" href="{{ route('user.my_registration_form') }}">My Registration Form</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="{{ route('user.school_calendar') }}">School Calendar</a></li>
-                                <li><a class="dropdown-item" href="{{ route('user.exam_schedule') }}">Exam Schedules</a></li>
-                                <li><a class="dropdown-item" href="{{ route('user.bulletin_board') }}">Bulletin Board</a>
-                                <li><a class="dropdown-item" href="{{ route('user.subject_materials') }}">Subject Materials</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('user.my_profile') }}">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('user.logout') }}">Logout</a></li>
-                    </ul>
+                <!-- MENU ACTIONS -->
+                <div class="col">
+                    <div class="dropdown-center">
+                        <button class="btn btn-outline-success" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" data-bs-display="static">
+                            <i class="bi bi-caret-down-fill"></i>
+                            <!-- <i class="fa-solid fa-caret-down"></i> -->
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-start dropdown-menu-lg-end">
+                            <li><a class="dropdown-item text-uppercase" href="{{ route('my_subjects') }}">My Subjects</a></li>
+                            <li><a class="dropdown-item text-uppercase" href="{{ route('my_checklist') }}">My Checklist</a></li>
+                            <li><a class="dropdown-item text-uppercase" href="{{ route('my_registration_form') }}">My Registration</a></li>
+                            <li><a class="dropdown-item text-uppercase" href="{{ route('my_schedule') }}">My Schedule</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-uppercase" href="/dash/grades">My Checklist</a></li>
+                            <li><a class="dropdown-item text-uppercase" href="/dash/regform">My Registration</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- PROFILE -->
+                <div class="col">
+                    <a href="/profile" class="btn btn-outline-success">
+                        <i class="bi bi-person-fill-gear"></i>
+                        <!-- <i class="fa-solid fa-user-gear"></i> -->
+                    </a>
+                </div>
+                <!-- LOGOUT -->
+                <div class="col">
+                    <a href="/logout" class="btn btn-outline-danger">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <!-- <i class="fa-solid fa-right-from-bracket"></i> -->
+                    </a>
                 </div>
             </div>
         </div>
