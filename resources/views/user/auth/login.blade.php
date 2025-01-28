@@ -32,7 +32,7 @@
 
                             <p>
                                 For <span class="fw-bold green">new student</span> portal registration, <a
-                                    href="{{ route('user.register') }}">Register</a>
+                                    href="{{ route('register') }}">Register</a>
                             </p>
 
                             <p>
@@ -102,10 +102,10 @@
                                 </div>
                             </div>
                             <!-- Form -->
-                            <form action="{{ route('user.login') }}" method="post">
+                            <form action="{{ route('login') }}" method="post">
                                 @csrf
                                 <div class="row py-4">
-                                    <div class="col-12">
+                                    <div class="col">
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon1">
                                                 <i class="bi bi-person"></i>
@@ -114,7 +114,10 @@
                                                 aria-label="Email" aria-describedby="basic-addon1" name="email"
                                                 value="{{ old('email') }}">
                                             @error('email')
-                                                {{ $message }}
+                                                <div class="alert alert-danger" role="alert">
+                                                    <i class="bi bi-exclamation-triangle"></i>
+                                                    {{ $message }}
+                                                </div>
                                             @enderror
                                         </div>
                                     </div>
@@ -138,11 +141,13 @@
                                     </div>
                                 @enderror
                                 <div class="col-12">
-                                    <a href="{{ route('user.forgot_password') }}">Forgot Password</a>
+                                    <a href="{{ route('forgot_password') }}">Forgot Password</a>
                                 </div>
                                 <div class="d-grid gap-2 col-8 mx-auto py-2">
-                                    <button class="btn btn-success" type="submit"><i class="bi bi-door-open"></i>
-                                        Login</button>
+                                    <button class="btn btn-success" type="submit">
+                                        <i class="bi bi-door-open"></i>
+                                        Login
+                                    </button>
                                 </div>
                             </form>
                         </div>

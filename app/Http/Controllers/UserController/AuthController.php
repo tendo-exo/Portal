@@ -32,18 +32,18 @@ class AuthController extends Controller
         ]);
 
         // Redirect
-        return to_route('user.login');
+        return to_route('login');
     }
     public function login (Request $request) {
         // Validate
         $fields = $request->validate([
-            'email' => ['required', 'email', 'ends_with:@cvsu.edu.ph'],
+            'email' => ['required', 'email', 'ends_with:@cvsu.edu.ph', 'exists:App\Models\StudentRecord,email'],
             'password' => ['required']
         ]);
 
         // Try to login user
         if (Auth::attempt($fields)) {
-            return route('user.dashboard');
+            return to_route('dashboard');
         } else {
             return back()->withErrors([
                 'failed' => 'The provided credentials do not match our records.'
@@ -53,6 +53,6 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return to_route('user.login');
+        return to_route('login');
     }
 }
